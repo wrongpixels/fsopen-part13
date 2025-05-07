@@ -1,11 +1,13 @@
 services:
   postgres:
     image: postgres:15
-    container_name: postgres_blogs
+    container_name: postgres-blogs
     volumes:
       - blogs_db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=supersafe
+      POSTGRES_PASSWORD=supersafe
+      POSTGRES_USER=admin
+      POSTGRES_DB=blogsApp
     ports:
       - 5432:5432
 
