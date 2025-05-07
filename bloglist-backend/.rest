@@ -1,0 +1,25 @@
+###POST
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Contempts",
+    "author": "Mik Michaels",
+    "url": "http://mikeals.com"
+}
+
+###DELETE
+DELETE http://localhost:3001/api/blogs/6
+
+
+###PUT
+PUT http://localhost:3001/api/blogs/3
+Content-Type: application/json
+
+{
+    "important": false
+}
+
+###GET
+
+GET http://localhost:3001/api/blogs
