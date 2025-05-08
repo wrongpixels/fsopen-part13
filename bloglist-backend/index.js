@@ -1,6 +1,6 @@
 require('dotenv').config()
 const express = require('express')
-const { Sequelize, QueryTypes, Model, DataTypes } = require('sequelize')
+const { Sequelize, Model, DataTypes } = require('sequelize')
 const sequelize = new Sequelize(process.env.POSTGRES_URL)
 
 const app = express()

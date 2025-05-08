@@ -5,9 +5,9 @@ services:
     volumes:
       - blogs_db:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD=supersafe
-      POSTGRES_USER=admin
-      POSTGRES_DB=blogsApp
+     - POSTGRES_PASSWORD=supersafe
+     - POSTGRES_USER=admin
+     - POSTGRES_DB=blogsApp
     ports:
       - 5432:5432
 
