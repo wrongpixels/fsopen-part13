@@ -30,6 +30,20 @@ router.get('/:id', fetchBlog, async (req, res) => {
   }
 })
 
+router.put('/:id', fetchBlog, async (req, res) => {
+  try {
+    const likes = Number(req.body.likes)
+    if (isNaN(likes)) {
+      return res.status(400).json({ error: 'Likes must be a number' })
+    }
+    req.blog.likes = likes
+    await req.blog.save()
+    res.json(req.blog)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+})
+
 router.post('/', async (req, res) => {
   try {
     const blog = await Blog.create(req.body)

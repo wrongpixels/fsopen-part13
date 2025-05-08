@@ -13,11 +13,11 @@ DELETE http://localhost:3001/api/blogs/6
 
 
 ###PUT
-PUT http://localhost:3001/api/blogs/3
+PUT http://localhost:3001/api/blogs/2
 Content-Type: application/json
 
 {
-    "important": false
+    "likes": "test"
 }
 
 ###GET
