@@ -1,26 +1,19 @@
 module.exports = {
   root: true,
   env: {
-    node: true,
     es6: true,
-    jest: true
+    node: true,
+    browser: true,
   },
-  extends: ['eslint:recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'commonjs'
+    sourceType: 'module',
   },
-  ignorePatterns: ['bloglist-frontend/**', 'node_modules/**', 'dist/**', 'build/**', 'playwright.config.js', 'test-results/**', 'playwright-report/**'],
-
+  extends: ['eslint:recommended'],
   rules: {
-    'indent': ['error', 2],
-    'linebreak-style': ['error', 'unix'],
-    'quotes': ['error', 'single'],
-    'semi': ['error', 'never'],
-    'eqeqeq': 'error',
-    'no-trailing-spaces': 'error',
-    'object-curly-spacing': ['error', 'always'],
-    'arrow-spacing': ['error', { 'before': true, 'after': true }],
-    'no-console': 0
-  }
+    // NO semicolons ✓
+    semi: ['error', 'never'],
+    // single quotes, but allow escaping
+    quotes: ['error', 'single', { avoidEscape: true }],
+  },
 }
