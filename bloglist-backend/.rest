@@ -3,9 +3,9 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Contempts",
-    "author": "Mik Michaels",
-    "url": "http://mikeals.com"
+    "tite": "Contempts",
+    "auhor": "Mik Michaels",
+    "ur": "http://mikeals.com"
 }
 
 ###DELETE
@@ -17,7 +17,7 @@ PUT http://localhost:3001/api/blogs/2
 Content-Type: application/json
 
 {
-    "likes": "test"
+    "like": "test"
 }
 
 ###GET
