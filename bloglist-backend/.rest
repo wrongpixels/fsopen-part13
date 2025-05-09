@@ -8,6 +8,34 @@ Content-Type: application/json
     "ur": "http://mikeals.com"
 }
 
+###CREATE USER
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "username": "contempts",
+    "name": "charles"
+}
+
+### EDIT USERNAME
+PUT http://localhost:3001/api/users/testo
+Content-Type: application/json
+
+{
+    "username": "testo2"
+}
+
+###GET USERS
+GET http://localhost:3001/api/users
+
+###LOGIN
+Content-Type: application/json
+
+{
+    "username": "Contempts",
+    "password": "supersafe"
+}
+
 ###DELETE
 DELETE http://localhost:3001/api/blogs/6
 

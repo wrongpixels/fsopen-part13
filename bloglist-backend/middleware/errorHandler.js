@@ -2,7 +2,7 @@
 const errorHandler = (error, _, res, _next) => {
   const finalError = {
     message: 'There was an error handling the request',
-    status: 500,
+    status: error.status || 500,
   }
   console.log(error.name)
   switch (error.name) {
