@@ -4,7 +4,7 @@ const errorHandler = (error, _, res, _next) => {
     message: error.message || 'There was an error handling the request',
     status: error.status || 500,
   }
-  console.log(error.name)
+  console.log(error)
   switch (error.name) {
     case 'SequelizeValidationError': {
       finalError.status = 400

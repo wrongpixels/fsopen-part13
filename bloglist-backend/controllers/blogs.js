@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const { Blog } = require('../models')
 const { fetchBlog, tokenExtractor } = require('../middleware')
+const CustomError = require('../util/customError')
 
 router.get('/', async (_, res, next) => {
   try {
@@ -42,8 +43,12 @@ router.post('/', tokenExtractor, async (req, res, next) => {
   }
 })
 
-router.delete('/:id', fetchBlog, async (req, res, next) => {
+router.delete('/:id', tokenExtractor, fetchBlog, async (req, res, next) => {
   try {
+    if (req.activeUser.id !== req.blog.userId) {
+      console.log(req.activeUser.id, req.blog.userId)
+      throw new CustomError('Wrong credentials!', 401)
+    }
     await req.blog.destroy()
     res.status(204).end()
   } catch (error) {

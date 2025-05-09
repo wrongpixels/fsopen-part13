@@ -1,8 +1,8 @@
 class CustomError extends Error {
   constructor(
     message = 'There was an error with the request',
-    name = 'CustomError',
-    status = 500
+    status = 500,
+    name = 'CustomError'
   ) {
     super(message)
     this.name = name
