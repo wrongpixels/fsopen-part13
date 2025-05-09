@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const { Blog } = require('../models')
-const { fetchBlog } = require('../middleware')
+const { fetchBlog, tokenExtractor } = require('../middleware')
 
 router.get('/', async (_, res, next) => {
   try {
@@ -33,9 +33,9 @@ router.put('/:id', fetchBlog, async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', tokenExtractor, async (req, res, next) => {
   try {
-    const blog = await Blog.create(req.body)
+    const blog = await Blog.create({ ...req.body, userId: req.activeUser.id })
     res.json(blog)
   } catch (error) {
     next(error)

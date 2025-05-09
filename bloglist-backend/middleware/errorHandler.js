@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (error, _, res, _next) => {
   const finalError = {
-    message: 'There was an error handling the request',
+    message: error.message || 'There was an error handling the request',
     status: error.status || 500,
   }
   console.log(error.name)

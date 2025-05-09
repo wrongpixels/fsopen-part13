@@ -16,10 +16,12 @@ Blog.init(
     title: {
       type: DataTypes.TEXT,
       allowNull: false,
+      unique: true,
     },
     url: {
       type: DataTypes.TEXT,
       allowNull: false,
+      unique: true,
     },
     likes: {
       type: DataTypes.INTEGER,
