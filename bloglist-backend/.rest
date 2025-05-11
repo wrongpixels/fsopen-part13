@@ -15,9 +15,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNvb
 
 
 {
-    "title": "Contempts of authors",
-    "author": "Mik Michaels Reactor",
-    "url": "http://mikelReacts_under_author.com"
+    "title": "John of authors",
+    "author": "John Johnson",
+    "url": "http://john.com"
 }
 ###LOGIN
 POST http://localhost:3001/api/login
