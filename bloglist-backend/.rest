@@ -15,9 +15,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNvb
 
 
 {
-    "title": "Contempts of react",
-    "author": "Mik Michaels",
-    "url": "http://mikelReacts_under.com"
+    "title": "Contempts of authors",
+    "author": "Mik Michaels Reactor",
+    "url": "http://mikelReacts_under_author.com"
 }
 ###LOGIN
 POST http://localhost:3001/api/login
