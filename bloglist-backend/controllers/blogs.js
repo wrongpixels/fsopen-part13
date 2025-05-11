@@ -1,11 +1,19 @@
 const router = require('express').Router()
-const { Blog } = require('../models')
+const { Blog, User } = require('../models')
 const { fetchBlog, tokenExtractor } = require('../middleware')
 const CustomError = require('../util/customError')
 
 router.get('/', async (_, res, next) => {
   try {
-    const blogs = await Blog.findAll()
+    const blogs = await Blog.findAll({
+      attributes: {
+        exclude: ['userId'],
+      },
+      include: {
+        model: User,
+        attributes: ['username'],
+      },
+    })
     res.json(blogs)
   } catch (error) {
     next(error)

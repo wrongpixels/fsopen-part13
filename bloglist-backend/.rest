@@ -11,13 +11,13 @@ Content-Type: application/json
 ###POST
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNvbnRlbXB0c0Bjb250ZW1wdHMuY29tIiwiaWQiOjEsImlhdCI6MTc0NjgxMzQwMH0.GXk3vnxjz8C8BvAmk_kS2XqT_IZ6VdmF5e3GhD29G38
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNvbnRlbXB0c0Bjb250ZW1wdHMuY29tIiwiaWQiOjEsImlhdCI6MTc0Njk4NDg2M30._MiiqfyIP8g9YYbhGVCfFPKuxUqXF71qd5wi9JOPvlA
 
 
 {
-    "title": "Contempts",
+    "title": "Contempts 2",
     "author": "Mik Michaels",
-    "url": "http://mikeals.com"
+    "url": "http://mikeals2.com"
 }
 ###LOGIN
 POST http://localhost:3001/api/login
