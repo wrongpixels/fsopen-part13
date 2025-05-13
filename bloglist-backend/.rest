@@ -15,9 +15,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNvb
 
 
 {
-    "title": "John of auhors",
+    "title": "John 2001 of auhors",
     "author": "John Johnson",
-    "url": "http://john.com"
+    "url": "http://john21.com",
+    "year": 2001
 }
 ###LOGIN
 POST http://localhost:3001/api/login

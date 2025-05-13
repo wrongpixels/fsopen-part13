@@ -23,6 +23,13 @@ Blog.init(
       allowNull: false,
       unique: true,
     },
+    year: {
+      type: DataTypes.INTEGER,
+      validate: {
+        max: new Date().getFullYear(),
+        min: 1991,
+      },
+    },
     likes: {
       type: DataTypes.INTEGER,
       allowNull: false,

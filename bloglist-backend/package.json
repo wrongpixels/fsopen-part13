@@ -9,7 +9,8 @@
   "scripts": {
     "test": "npm run test",
     "start": "node run index.js",
-    "dev": "nodemon run index.js"
+    "dev": "nodemon --ignore migrations run index.js",
+    "migration:down": "node util/rollback.js"
   },
   "dependencies": {
     "dotenv": "^16.5.0",
