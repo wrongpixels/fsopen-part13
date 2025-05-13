@@ -35,6 +35,7 @@ const startDB = async () => {
     console.log('Connected to PostgreSQL DB')
   } catch {
     console.error("Couldn't connect to Post")
+    return process.exit(1)
   }
 }
 
