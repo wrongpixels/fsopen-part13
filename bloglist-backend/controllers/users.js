@@ -5,12 +5,23 @@ const CustomError = require('../util/customError')
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      include: {
-        model: Blog,
-        attributes: {
-          exclude: ['userId'],
+      include: [
+        {
+          model: Blog,
+          attributes: {
+            exclude: ['userId'],
+          },
         },
-      },
+        {
+          model: Blog,
+          as: 'reading_blogs',
+          attributes: ['title'],
+          through: {
+            attributes: ['read'],
+            as: 'status',
+          },
+        },
+      ],
     })
     res.json(users)
   } catch (error) {
