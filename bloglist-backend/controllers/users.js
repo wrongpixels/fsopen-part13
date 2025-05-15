@@ -18,7 +18,6 @@ router.get('/', async (req, res, next) => {
           attributes: ['title'],
           through: {
             attributes: ['read'],
-            as: 'status',
           },
         },
       ],
@@ -31,6 +30,10 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
+    const where = {}
+    if (req.query.read === 'true' || req.query.read === 'false') {
+      where.read = req.query.read === 'true' ? true : false
+    }
     const user = await User.findByPk(req.params.id, {
       attributes: ['name', 'username'],
       include: [
@@ -49,12 +52,13 @@ router.get('/:id', async (req, res, next) => {
           through: {
             attributes: ['read', 'id'],
             as: 'readinglists',
+            where,
           },
         },
       ],
     })
     if (!user) {
-      throw new CustomError('User not found or not existing', 400)
+      throw new CustomError('User not found or not existing', 404)
     }
     res.json(user)
   } catch (error) {
