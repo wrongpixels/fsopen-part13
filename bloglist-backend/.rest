@@ -25,7 +25,7 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-    "username": "contempts@contempts.com",
+    "username": "contempts3@contempts.com",
     "password": "supersafe" 
 }
 ###CREATE USER
@@ -41,9 +41,19 @@ Content-Type: application/json
 POST http://localhost:3001/api/readinglists
 Content-Type: application/json
 
+
 {
     "userId": 3,
     "blogId": 2
+}
+
+###MODIFY READING LIST
+PUT http://localhost:3001/api/readinglists/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNvbnRlbXB0czNAY29udGVtcHRzLmNvbSIsImlkIjozLCJpYXQiOjE3NDczMTk2MjN9.o6aACWS_uEywcPyegFZNBub8PK2FbU2dFdX3bqI_opU
+
+{
+    "read": true
 }
 
 

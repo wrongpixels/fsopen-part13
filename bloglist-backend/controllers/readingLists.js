@@ -1,6 +1,24 @@
 const router = require('express').Router()
 const CustomError = require('../util/customError')
 const { Blog, User, ReadingList } = require('../models')
+const { tokenExtractor } = require('../middleware')
+
+router.put('/:id', tokenExtractor, async (req, res, next) => {
+  try {
+    const list = await ReadingList.findByPk(req.params.id)
+    if (!list) {
+      throw new CustomError('Error getting reading list', 400)
+    }
+    if (req.activeUser.id !== list.userId) {
+      throw new CustomError('Unauthorized', 401)
+    }
+    list.read = req.body.read
+    await list.save()
+    res.status(200).json(list)
+  } catch (error) {
+    next(error)
+  }
+})
 
 router.post('/', async (req, res, next) => {
   try {
