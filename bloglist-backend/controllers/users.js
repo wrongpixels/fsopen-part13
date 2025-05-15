@@ -29,6 +29,38 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/:id', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.id, {
+      attributes: ['name', 'username'],
+      include: [
+        {
+          model: Blog,
+          attributes: {
+            exclude: ['userId', 'createdAt', 'updatedAt'],
+          },
+        },
+        {
+          model: Blog,
+          as: 'reading_blogs',
+          attributes: {
+            exclude: ['userId', 'createdAt', 'updatedAt'],
+          },
+          through: {
+            attributes: ['read'],
+          },
+        },
+      ],
+    })
+    if (!user) {
+      throw new CustomError('User not found or not existing', 400)
+    }
+    res.json(user)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.put('/:username', async (req, res, next) => {
   try {
     const user = await User.findOne({
