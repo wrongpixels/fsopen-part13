@@ -11,13 +11,13 @@ Content-Type: application/json
 ###POST
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNvbnRlbXB0c0Bjb250ZW1wdHMuY29tIiwiaWQiOjEsImlhdCI6MTc0NzI0Njk3OX0.WchfaoAf7dXoXIoRg0vTf0uWtFbZI1Fecq9UbGLYzt4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNvbnRlbXB0czNAY29udGVtcHRzLmNvbSIsImlkIjozLCJpYXQiOjE3NDc5MjE5MzJ9.yRd6FtDpu87Iby9qqLEKn5WAl-p4Aiu5IlSdwmw_Qts
 
 
 {
-    "title": "John 2003 of auhors",
+    "title": "John 20303 of auhors",
     "author": "John Johnson",
-    "url": "http://john213.com",
+    "url": "http://john2313.com",
     "year": 2001
 }
 ###LOGIN
@@ -36,6 +36,38 @@ Content-Type: application/json
     "username": "contempts3@contempts.com",
     "name": "charles"
 }
+
+###CREATE ADMIN
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "username": "admin2@admin.com",
+    "name": "charles",
+    "admin": true
+}
+
+###LOGIN ADMIN
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "admin2@admin.com",
+    "password": "supersafe" 
+}
+
+### BAN USER
+PUT http://localhost:3001/api/users/3/disable
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMkBhZG1pbi5jb20iLCJpZCI6NSwiaWF0IjoxNzQ3OTI0MDc2fQ.KDwWvRCkSwBvckOjln3XZxSMYS4kBYVffz5mi8ViGwU
+
+
+### UNBAN USER
+
+PUT http://localhost:3001/api/users/3/enable
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMkBhZG1pbi5jb20iLCJpZCI6NSwiaWF0IjoxNzQ3OTEwODUwfQ.CSnXC4kNzzseQwOFsLml0ys8th3Pa1ZT3BORL_rPVEU
+
 
 ###ADD TO READING LIST
 POST http://localhost:3001/api/readinglists
@@ -64,6 +96,21 @@ Content-Type: application/json
 {
     "username": "testo@2.com"
 }
+
+
+### LOGOUT USER
+DELETE http://localhost:3001/api/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMkBhZG1pbi5jb20iLCJpZCI6NSwiaWF0IjoxNzQ3OTI0MDc2fQ.KDwWvRCkSwBvckOjln3XZxSMYS4kBYVffz5mi8ViGwU
+
+
+###DELETE USER SESSION
+DELETE http://localhost:3001/api/sessions/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMkBhZG1pbi5jb20iLCJpZCI6NSwiaWF0IjoxNzQ3OTI0MDc2fQ.KDwWvRCkSwBvckOjln3XZxSMYS4kBYVffz5mi8ViGwU
+
+###GET SESSIONS
+GET http://localhost:3001/api/sessions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMkBhZG1pbi5jb20iLCJpZCI6NSwiaWF0IjoxNzQ3OTI0MDc2fQ.KDwWvRCkSwBvckOjln3XZxSMYS4kBYVffz5mi8ViGwU
+
 
 ###GET USERS
 GET http://localhost:3001/api/users

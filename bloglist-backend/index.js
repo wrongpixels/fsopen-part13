@@ -6,8 +6,10 @@ const {
   blogsRouter,
   authorsRouter,
   loginRouter,
+  logoutRouter,
   usersRouter,
   readingListRouter,
+  sessionsRouter,
 } = require('./controllers')
 
 const { errorHandler, unknownEndpoint } = require('./middleware')
@@ -17,8 +19,10 @@ app.use(express.json())
 app.use('/api/blogs', blogsRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/logout', logoutRouter)
 app.use('/api/authors', authorsRouter)
 app.use('/api/readinglists', readingListRouter)
+app.use('/api/sessions', sessionsRouter)
 app.use(errorHandler)
 app.use(unknownEndpoint)
 

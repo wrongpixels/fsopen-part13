@@ -18,6 +18,14 @@ User.init(
         isEmail: true,
       },
     },
+    admin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    disabled: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,

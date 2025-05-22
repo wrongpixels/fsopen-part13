@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { tokenExtractor, adminChecker } = require('../middleware')
 const { User, Blog } = require('../models')
 const CustomError = require('../util/customError')
 
@@ -83,6 +84,44 @@ router.put('/:username', async (req, res, next) => {
     next(error)
   }
 })
+
+router.put(
+  '/:id/disable',
+  tokenExtractor,
+  adminChecker,
+  async (req, res, next) => {
+    try {
+      const user = await User.findByPk(req.params.id)
+      if (!user) {
+        throw new CustomError('User does not exist', 404)
+      }
+      user.disabled = true
+      await user.save()
+      res.status(201).json(user)
+    } catch (error) {
+      next(error)
+    }
+  }
+)
+
+router.put(
+  '/:id/enable',
+  tokenExtractor,
+  adminChecker,
+  async (req, res, next) => {
+    try {
+      const user = await User.findByPk(req.params.id)
+      if (!user) {
+        throw new CustomError('User does not exist', 404)
+      }
+      user.disabled = false
+      await user.save()
+      res.status(201).json(user)
+    } catch (error) {
+      next(error)
+    }
+  }
+)
 
 router.post('/', async (req, res, next) => {
   try {

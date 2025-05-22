@@ -18,20 +18,18 @@ router.post('/', async (req, res, next) => {
     if (!validUser) {
       throw new CustomError('Invalid credentials', 401)
     }
+    const existingSession = await Session.findOne({
+      where: {
+        userId: validUser.id,
+      },
+    })
     if (validUser.disabled) {
-      throw new CustomError(
-        'User not allowed to log in. Contact administration.',
-        401
-      )
+      await existingSession.destroy()
+      throw new CustomError('User is disabled. Contact administration.', 401)
     }
     const userData = { username: validUser.username, id: validUser.id }
     const token = jwt.sign(userData, SECRET)
     if (token) {
-      const existingSession = await Session.findOne({
-        where: {
-          userId: validUser.id,
-        },
-      })
       if (existingSession) {
         existingSession.token = token
         await existingSession.save()
